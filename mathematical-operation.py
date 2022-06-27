@@ -24,4 +24,4 @@ print(dot_product ** 2)
 a = tf.random.normal((2, 3))
 b = tf.random.normal((3, 4))
 mul_of_ab = tf.matmul(a, b)
-print(mul_of_ab)  # equals a @ b
+print(mul_of_ab)  # equals a @ b, size of (2, 4)

@@ -18,6 +18,7 @@ print(y[0, :])
 print(y[0:2, :])
 
 z = tf.range(9)
+print(z)
 
 z_reshape = tf.reshape(z, (3, 3))
 print(z_reshape)
