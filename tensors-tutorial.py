@@ -1,4 +1,7 @@
+import os
+
 import tensorflow as tf
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # Initialization of Tensors
 x = tf.constant(4, shape=(1, 1), dtype=tf.float32)
@@ -7,7 +10,7 @@ print(x, y)
 
 ones = tf.ones((3, 3))
 zeros = tf.zeros((2, 3))
-identity = tf.eye(3)  # tf.eye() for identity matrix
+identity = tf.eye(3)  # tf.eye() to create identity matrix
 print(ones, zeros, identity)
 
 norm = tf.random.normal((3, 3), mean=0, stddev=1)  # normal distribution randoms
