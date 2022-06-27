@@ -1,6 +1,9 @@
 import tensorflow as tf
-
 from tensorflow.keras.datasets import mnist
+
+import os
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 physical_devices = tf.config.list_physical_devices("GPU")
 tf.config.experimental.set_memory_growth(physical_devices[0], True)
@@ -9,9 +12,14 @@ tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
+
 # Flatten
+# Shape dimension can be -1.
+# In this case, the value is inferred from the length of the array and remaining dimensions.
 x_train = x_train.reshape(-1, 28 * 28).astype("float32") / 255.  # -1 means keeping previous dimension
 x_test = x_test.reshape(-1, 28 * 28).astype("float32") / 255.
+
+print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
 # Sequential API (Very convenient, not very flexible)
 model = tf.keras.Sequential(
@@ -24,7 +32,7 @@ model = tf.keras.Sequential(
 
 model.compile(
     loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-    optimizer=tf.keras.optimizers.Adam(lr=0.001),
+    optimizer=tf.keras.optimizers.Adam(learning_rate=0.01),
     metrics=["accuracy"]
 )
 
